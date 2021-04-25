@@ -22,6 +22,22 @@ public class Light : MonoBehaviour
         return energy.keys.Last().time - _lightTimer;
     }
 
+    public float GetRemainingTimePercent()
+    {
+        return GetRemainingTime() / energy.keys.Last().time;
+    }
+    public bool Charge(float cost)
+    {
+        if(cost > GetRemainingTimePercent()) 
+            return false;
+
+        _lightTimer += cost * energy.keys.Last().time;
+        return true;
+    }
+    public bool CouldCharge(float cost)
+    {
+        return cost < GetRemainingTimePercent();
+    }
     public string GetRemainingTimeToText()
     {
         int timer = (int)Math.Floor(GetRemainingTime());
@@ -45,7 +61,7 @@ public class Light : MonoBehaviour
 
     private bool _launch = false;
     
-    [SerializeField] private bool _switchLight = false;
+    [SerializeField] public bool switchLight = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,11 +86,11 @@ public class Light : MonoBehaviour
         float energyCoeff = 1.0f;
         if (_launch)
         {
-            _lightTimer += Time.deltaTime * (_switchLight?1.0f:0.1f); 
+            _lightTimer += Time.deltaTime * (switchLight?1.0f:0.1f); 
             energyCoeff = energy.Evaluate(_lightTimer);
         }
         
-        if (_switchLight)
+        if (switchLight)
         {
             float time = Controller.TimeFromValue(turnOn, intensity) + Time.deltaTime;
             intensity = turnOn.Evaluate(time);
@@ -99,14 +115,14 @@ public class Light : MonoBehaviour
 
     public void Switch()
     {
-        _switchLight = !_switchLight;
+        switchLight = !switchLight;
         
     }
 
     public void UnPlug()
     {
         globe.enabled = false;
-        _switchLight = false;
+        switchLight = false;
     }
 
     public void Plug()

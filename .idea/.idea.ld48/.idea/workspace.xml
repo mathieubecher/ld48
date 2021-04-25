@@ -10,18 +10,23 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interact/AbstractInteract.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interact/StairInteract.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/DetectWall.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Light.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnvironmentLight.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/DetectGround.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Cog.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interact/InteractLight.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interact/ReloaderInteract.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/StartTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/Controller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interact/PlatformInteract.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fps.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.pixel-perfect@2.0.4/Runtime/PixelPerfectCamera.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LightGestor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Row.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interact/CounterInteract.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interact/Platform.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -32,12 +37,17 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/StartTrigger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Cog.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Row.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Interact/AbstractInteract.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentLight.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interact/InteractLight.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Light.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/Controller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LightGestor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentLight.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interact/StairInteract.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interact/CounterInteract.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interact/ReloaderInteract.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Light.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interact/Platform.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/Controller.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interact/AbstractInteract.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interact/PlatformInteract.cs" />
       </list>
     </option>
   </component>

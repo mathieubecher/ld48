@@ -32,6 +32,9 @@ public class Controller : MonoBehaviour
     [SerializeField] private AnimationCurve jumpTimePosition;
     [SerializeField] private DetectGround detectGround;
     [SerializeField] private TextMeshProUGUI verticalSpeedText;
+    [SerializeField] private TextMeshPro interactText;
+    [SerializeField] private Color black;
+    [SerializeField] private Color white;
     private bool _jumping;
     private bool jumping{
         get => _jumping;
@@ -47,6 +50,7 @@ public class Controller : MonoBehaviour
     [Header("Dead")] 
     [SerializeField] private Animator respawnUI;
     private bool _dead = false;
+    public bool IsAlive(){return !_dead;}
     private bool _stop = false;
 
     private AbstractInteract _interact;
@@ -70,7 +74,13 @@ public class Controller : MonoBehaviour
         }
 
         if (!_stop) HorizontalMovement();
-        
+
+        if (!_dead && _interact != null && _interact.CouldInteract())
+        {
+            interactText.text = _interact.info;
+            interactText.color = _light.switchLight ? black : white;
+        }
+        else interactText.text = "";
     }
 
     
@@ -96,7 +106,6 @@ public class Controller : MonoBehaviour
         
         Debug.Log("Dead");
         _dead = true;
-        _light.Stop();
         if (stop) StopPlayer();
         respawnUI.Play("Respawn", 0, 0.0f);
         StartCoroutine("UpdateRespawn");
@@ -107,11 +116,17 @@ public class Controller : MonoBehaviour
         yield return new WaitForSeconds(2.1f);
         StopPlayer();
         
+        _rigidbody.velocity = Vector2.zero;
         transform.position = _startPos;
         _light.Plug();
         FindObjectOfType<Cog>().energy -= 1.0f;
+        _light.Stop();
         yield return new WaitForSeconds(3f);
         _dead = false;
+        foreach (var interact in FindObjectsOfType<AbstractInteract>())
+        {
+            interact.Reset();
+        }
         StartPlayer();
     }
     IEnumerator UnPlugLight() 
@@ -138,24 +153,20 @@ public class Controller : MonoBehaviour
         AbstractInteract interact;
         if (other.TryGetComponent<AbstractInteract>(out interact))
         {
-            _interact = interact;
+            if(interact.CouldInteract())
+                _interact = interact;
         }
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.TryGetComponent<AbstractInteract>(out _))
+        AbstractInteract interact;
+        if (other.TryGetComponent<AbstractInteract>(out interact))
         {
-            _interact = null;
+            if(interact == _interact)
+                _interact = null;
         }
     }
 
-    public void TryInteract()
-    {
-        if (_interact && _interact.CouldInteract())
-        {
-            _interact.Interact();
-        }
-    }
     
 #region Movement
     void HorizontalMovement()
@@ -256,6 +267,13 @@ public class Controller : MonoBehaviour
         _light.Switch();
     }
 
+    public void TryInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed && _interact && _interact.CouldInteract())
+        {
+            _interact.Interact();
+        }
+    }
     public void Pause()
     {
 #if UNITY_EDITOR

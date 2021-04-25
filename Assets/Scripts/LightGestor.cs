@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class LightGestor : MonoBehaviour
 {
-    private List<EnvironmentLight> _lights;
+    [SerializeField]private List<EnvironmentLight> _lights;
 
     private List<string> _tags;
     // Start is called before the first frame update

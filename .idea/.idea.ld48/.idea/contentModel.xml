@@ -53,7 +53,12 @@
           <e p="Fps.cs" t="Include" />
           <e p="Interact" t="Include">
             <e p="AbstractInteract.cs" t="Include" />
+            <e p="CounterInteract.cs" t="Include" />
             <e p="InteractLight.cs" t="Include" />
+            <e p="Platform.cs" t="Include" />
+            <e p="PlatformInteract.cs" t="Include" />
+            <e p="ReloaderInteract.cs" t="Include" />
+            <e p="StairInteract.cs" t="Include" />
           </e>
           <e p="Light.cs" t="Include" />
           <e p="LightGestor.cs" t="Include" />

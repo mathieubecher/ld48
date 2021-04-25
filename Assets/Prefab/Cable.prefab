@@ -96,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightId: _lightPosition2
   intensity: 20
+  isActive: 1
 --- !u!1 &1650448823186464202
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,9 +222,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03, y: 0.08}
+  m_Offset: {x: -0.03, y: -1.65}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 3
 --- !u!1 &1650448823929469305
 GameObject:
   m_ObjectHideFlags: 0
