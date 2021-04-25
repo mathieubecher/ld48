@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\mbelk\.Rider2019.2\system\extResources" t="IncludeRecursive" />
@@ -40,11 +40,25 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Cog.cs" t="Include" />
           <e p="Controller" t="Include">
             <e p="Controller.cs" t="Include" />
-            <e p="MyInputActions.cs" t="Include" />
+            <e p="DetectGround.cs" t="Include" />
+            <e p="DetectWall.cs" t="Include" />
+            <e p="Inputs" t="Include">
+              <e p="MyInputActions.cs" t="Include" />
+            </e>
           </e>
+          <e p="EnvironmentLight.cs" t="Include" />
           <e p="Fps.cs" t="Include" />
+          <e p="Interact" t="Include">
+            <e p="AbstractInteract.cs" t="Include" />
+            <e p="InteractLight.cs" t="Include" />
+          </e>
+          <e p="Light.cs" t="Include" />
+          <e p="LightGestor.cs" t="Include" />
+          <e p="Row.cs" t="Include" />
+          <e p="StartTrigger.cs" t="Include" />
         </e>
       </e>
       <e p="ld48.sln" t="IncludeFlat" />

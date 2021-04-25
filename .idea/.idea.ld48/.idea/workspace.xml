@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b2aeca1-9410-41fa-b02f-72957775f49f" name="Default Changelist" comment="" />
@@ -9,14 +9,35 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fps.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interact/AbstractInteract.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/DetectWall.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Light.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnvironmentLight.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/DetectGround.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Cog.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interact/InteractLight.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/StartTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/Controller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fps.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.pixel-perfect@2.0.4/Runtime/PixelPerfectCamera.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LightGestor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Row.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/Controller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Fps.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/DetectWall.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/DetectGround.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/StartTrigger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Cog.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Row.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interact/AbstractInteract.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentLight.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interact/InteractLight.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Light.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/Controller.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/LightGestor.cs" />
       </list>
     </option>
   </component>
@@ -25,6 +46,7 @@
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
