@@ -167,7 +167,7 @@ public class @MyInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""532fada8-db39-4738-a92d-c38907ef927d"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -244,7 +244,7 @@ public class @MyInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""8862d2c8-c2f3-40b1-a2ae-1529dbd7e4d1"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",

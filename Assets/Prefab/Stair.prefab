@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   set: 0
+  info: '[Go down]'
   start: {fileID: 5362014176811659945}
   end: {fileID: 5362014177334182455}
   controller: {fileID: 0}
@@ -134,6 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5362014176875304220}
   - component: {fileID: 5362014176875304219}
+  - component: {fileID: 172052805953946211}
   m_Layer: 0
   m_Name: Stair
   m_TagString: Untagged
@@ -169,7 +171,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf3f990af3706064195e254256fc55ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counter: 1
+  _counter: 1
+  maxCharge: 3
+  set: 0
+--- !u!114 &172052805953946211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362014176875304221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9369d5f0e169340ae058463b399a0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 9213452022882247905, guid: cbd9671ab68da8e4a97cdebd3dd69d1a, type: 3}
+  counter: {fileID: 5362014176875304219}
+  top: {fileID: 5362014176811659959}
+  stairs: []
+  degradation:
+  - {fileID: 1537640501440115582, guid: d3782993edf6cab4baebb996b848a3d6, type: 3}
+  - {fileID: 6509954730284741460, guid: d3782993edf6cab4baebb996b848a3d6, type: 3}
+  - {fileID: 1108633265639080248, guid: d3782993edf6cab4baebb996b848a3d6, type: 3}
+  - {fileID: -952595548967608060, guid: d3782993edf6cab4baebb996b848a3d6, type: 3}
+  degradate: 0
 --- !u!1 &5362014177334182440
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   set: 0
+  info: '[Climb]'
   start: {fileID: 5362014177334182455}
   end: {fileID: 5362014176811659945}
   controller: {fileID: 0}

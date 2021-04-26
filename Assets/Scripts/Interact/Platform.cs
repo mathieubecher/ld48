@@ -5,6 +5,8 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     public Rigidbody2D controller;
+    public bool dir = true;
+    [HideInInspector] public bool set = false;
     // Start is called before the first frame update
     void Start()
     {

@@ -7,15 +7,16 @@ public class PlatformInteract : AbstractInteract
     public Transform start;
     public Transform end;
     public float speed = 10.0f;
-    private bool _dir = true;
+    //public bool dir = true;
     public bool kynematic = false;
     public bool elevator = false;
-    private Platform _platform;
+    [SerializeField] private Platform _platform;
     
     public CounterInteract counter;
     void Start()
     {
-        _platform = transform.parent.GetComponent<Platform>();
+        if(_platform == null)
+            _platform = transform.parent.GetComponent<Platform>();
     }
 
     // Update is called once per frame
@@ -23,9 +24,9 @@ public class PlatformInteract : AbstractInteract
     {
         if (set)
         {
-            if (Vector2.Dot((_platform.transform.position - (_dir?end.position:start.position)),(_dir?1.0f:-1.0f) * (start.position - end.position)) > 0.0f)
+            if (Vector2.Dot((_platform.transform.position - (_platform.dir?end.position:start.position)),(_platform.dir?1.0f:-1.0f) * (start.position - end.position)) > 0.0f)
             {
-                Vector2 deltaPos = (_dir?1.0f:-1.0f) * (end.position - start.position).normalized * speed * Time.deltaTime;
+                Vector2 deltaPos = (_platform.dir?1.0f:-1.0f) * (end.position - start.position).normalized * speed * Time.deltaTime;
                 _platform.transform.position += (Vector3)deltaPos;
             }
             else
@@ -39,7 +40,7 @@ public class PlatformInteract : AbstractInteract
                     _platform.controller.GetComponent<Controller>().StartPlayer();
                 }
                 
-                _dir = !_dir;
+                _platform.dir = !_platform.dir;
             }
         }
     }
@@ -80,6 +81,9 @@ public class PlatformInteract : AbstractInteract
     public override void Reset()
     {
         if (elevator && counter.counter > 0)
+        {
             _platform.transform.position = end.position;
+            _platform.dir = false;
+        }
     }
 }

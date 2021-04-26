@@ -5,11 +5,13 @@ using System.Timers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = System.Random;
 
 public class Controller : MonoBehaviour
 {
     private static double TOLERANCE = 0.001f;
- 
+
+    private Animator _animator;
     [SerializeField] private GameObject _sprite;
     [SerializeField] private Light _light;
     public Light getLight { get => _light; }
@@ -49,6 +51,7 @@ public class Controller : MonoBehaviour
 
     [Header("Dead")] 
     [SerializeField] private Animator respawnUI;
+    [SerializeField] private GameObject deadBulb;
     private bool _dead = false;
     public bool IsAlive(){return !_dead;}
     private bool _stop = false;
@@ -63,6 +66,7 @@ public class Controller : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _startPos = transform.position;
+        _animator = GetComponent<Animator>();
 
     }
 
@@ -74,13 +78,18 @@ public class Controller : MonoBehaviour
         }
 
         if (!_stop) HorizontalMovement();
+        else _rigidbody.velocity = new Vector2(0.0f, _rigidbody.velocity.y);
 
-        if (!_dead && _interact != null && _interact.CouldInteract())
+        if (_interact != null && _interact.CouldInteract() && !_dead && !_stop && _light.globe.enabled)
         {
             interactText.text = _interact.info;
             interactText.color = _light.switchLight ? black : white;
         }
         else interactText.text = "";
+        _animator.SetFloat("Speed", Math.Abs(_horizontalSpeed));
+        _animator.SetBool("Ground", OnGround());
+        _animator.SetBool("Jump", jumping);
+        _animator.SetBool("Dead", _dead);
     }
 
     
@@ -103,8 +112,7 @@ public class Controller : MonoBehaviour
     public void Respawn(bool stop = true)
     {
         if (_dead) return;
-        
-        Debug.Log("Dead");
+        _rigidbody.velocity = new Vector2(0 ,_rigidbody.velocity.y);
         _dead = true;
         if (stop) StopPlayer();
         respawnUI.Play("Respawn", 0, 0.0f);
@@ -116,13 +124,17 @@ public class Controller : MonoBehaviour
         yield return new WaitForSeconds(2.1f);
         StopPlayer();
         
-        _rigidbody.velocity = Vector2.zero;
+        
+        
+        Instantiate(deadBulb, transform.position, Quaternion.Euler(0,0, UnityEngine.Random.value * 360f));
+        
         transform.position = _startPos;
         _light.Plug();
         FindObjectOfType<Cog>().energy -= 1.0f;
         _light.Stop();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         _dead = false;
+        yield return new WaitForSeconds(2f);
         foreach (var interact in FindObjectsOfType<AbstractInteract>())
         {
             interact.Reset();
@@ -269,7 +281,7 @@ public class Controller : MonoBehaviour
 
     public void TryInteract(InputAction.CallbackContext context)
     {
-        if (context.performed && _interact && _interact.CouldInteract())
+        if (context.performed && _interact != null && _interact.CouldInteract() && !_dead && !_stop && _light.globe.enabled)
         {
             _interact.Interact();
         }

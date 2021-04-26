@@ -54,7 +54,10 @@
           <e p="Interact" t="Include">
             <e p="AbstractInteract.cs" t="Include" />
             <e p="CounterInteract.cs" t="Include" />
+            <e p="EnergyBarre.cs" t="Include" />
+            <e p="InstantiateLadder.cs" t="Include" />
             <e p="InteractLight.cs" t="Include" />
+            <e p="Levier.cs" t="Include" />
             <e p="Platform.cs" t="Include" />
             <e p="PlatformInteract.cs" t="Include" />
             <e p="ReloaderInteract.cs" t="Include" />
@@ -62,7 +65,9 @@
           </e>
           <e p="Light.cs" t="Include" />
           <e p="LightGestor.cs" t="Include" />
+          <e p="LineCable.cs" t="Include" />
           <e p="Row.cs" t="Include" />
+          <e p="RowBySpeed.cs" t="Include" />
           <e p="StartTrigger.cs" t="Include" />
         </e>
       </e>

@@ -33,6 +33,7 @@ public class StairInteract : AbstractInteract
                 if(c.IsAlive()) c.StartPlayer();
                 counter.set = false;
                 set = false;
+                controller.GetComponent<Animator>().SetBool("Ladder", false);
             }
         }
     }
@@ -51,6 +52,8 @@ public class StairInteract : AbstractInteract
         FindObjectOfType<Controller>().StopPlayer();
         controller.GetComponent<Rigidbody2D>().isKinematic = true;
         controller.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        controller.GetComponent<Animator>().SetBool("Ladder", true);
+        controller.transform.position = new Vector2(start.position.x, controller.transform.position.y);
 
     }
 }

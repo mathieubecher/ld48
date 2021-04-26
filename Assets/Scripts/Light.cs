@@ -12,7 +12,7 @@ public class Light : MonoBehaviour
     [SerializeField] private AnimationCurve turnOn;
     [SerializeField] private AnimationCurve energy;
     [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private SpriteRenderer globe;
+    [SerializeField] public SpriteRenderer globe;
     
     private float _lightTimer = 0.0f;
     
