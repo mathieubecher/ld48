@@ -600,7 +600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   set: 0
-  info: '[Recharge]'
+  info: '[Recharge elevator]'
   counter: {fileID: 4316436083910704892}
   cost: 0.1
 --- !u!61 &4316436083846706989

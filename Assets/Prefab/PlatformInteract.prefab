@@ -1074,8 +1074,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f6310a865de1e4e84b138380bc0f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  set: 0
-  info: '[Recharge]'
+  set: 1
+  info: '[Recharge platform]'
   counter: {fileID: 8908505372528831115}
   cost: 0.1
 --- !u!61 &8908505372597019482
