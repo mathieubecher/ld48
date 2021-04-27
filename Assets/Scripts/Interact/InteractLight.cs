@@ -42,7 +42,7 @@ public class InteractLight : AbstractInteract
         FindObjectOfType<Controller>().StartCoroutine("UnPlugLight");
     }
 
-    public override bool CouldInteract()
+    public override bool CouldInteract(Controller controller)
     {
         return !set;
     }

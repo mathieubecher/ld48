@@ -38,7 +38,7 @@ public class StairInteract : AbstractInteract
         }
     }
 
-    public override bool CouldInteract()
+    public override bool CouldInteract(Controller controller)
     {
         return !counter.set && !set && counter.counter > 0;
     }

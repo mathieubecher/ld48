@@ -8,8 +8,6 @@ public class PlatformInteract : AbstractInteract
     public Transform end;
     public float speed = 10.0f;
     //public bool dir = true;
-    public bool kynematic = false;
-    public bool elevator = false;
     [SerializeField] private Platform _platform;
     
     public CounterInteract counter;
@@ -33,18 +31,12 @@ public class PlatformInteract : AbstractInteract
             {
                 counter.set = false;
                 set = false;
-                if (kynematic && _platform.controller != null)
-                {
-                    _platform.controller.isKinematic = false;
-                    _platform.controller.velocity = Vector2.zero;
-                    _platform.controller.GetComponent<Controller>().StartPlayer();
-                }
                 
                 _platform.dir = !_platform.dir;
             }
         }
     }
-    public override bool CouldInteract()
+    public override bool CouldInteract(Controller controller)
     {
         return !counter.set && !set && counter.counter > 0;
     }
@@ -53,13 +45,6 @@ public class PlatformInteract : AbstractInteract
     {
         counter.set = true;
         set = true;
-        if (kynematic && _platform.controller != null)
-        {
-            _platform.controller.isKinematic = true;
-            _platform.controller.velocity = Vector2.zero;
-            _platform.controller.GetComponent<Controller>().StopPlayer();
-            
-        }
         StartCoroutine("InteractLaunch");
         --counter.counter;
 
@@ -77,13 +62,15 @@ public class PlatformInteract : AbstractInteract
             
         }
     }
-
+    /*
     public override void Reset()
     {
         if (elevator && counter.counter > 0)
         {
+            set = false;
             _platform.transform.position = end.position;
             _platform.dir = false;
         }
     }
+    */
 }

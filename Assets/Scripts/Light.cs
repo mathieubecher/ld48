@@ -114,7 +114,7 @@ public class Light : MonoBehaviour
 
         if (_lightTimer > energy.keys.Last().time)
         {
-            FindObjectOfType<Controller>().Respawn(false);
+            FindObjectOfType<Controller>().Respawn(true);
         }
         
         timerText.text = GetRemainingTimeToText();

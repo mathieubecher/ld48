@@ -8,7 +8,7 @@ public class ReloaderInteract : AbstractInteract
     public CounterInteract counter;
     public float cost = 0.1f;
 
-    public override bool CouldInteract()
+    public override bool CouldInteract(Controller controller)
     {
         
         return counter.counter < counter.maxCharge && FindObjectOfType<Light>().CouldCharge(cost);

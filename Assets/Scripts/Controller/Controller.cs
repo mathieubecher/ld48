@@ -38,7 +38,7 @@ public class Controller : MonoBehaviour
     [SerializeField] private Color black;
     [SerializeField] private Color white;
     private bool _jumping;
-    private bool jumping{
+    public bool jumping{
         get => _jumping;
         set
         {
@@ -55,8 +55,23 @@ public class Controller : MonoBehaviour
     private bool _dead = false;
     public bool IsAlive(){return !_dead;}
     private bool _stop = false;
-
-    private AbstractInteract _interact;
+    public bool stop { get => _stop; }
+    private List<AbstractInteract> _interacts;
+    private AbstractInteract interact
+    {
+        get
+        {
+            AbstractInteract active = null;
+            foreach (AbstractInteract i in _interacts)
+            {
+                if (i.CouldInteract(this) && (active == null || (active.transform.position - transform.position).magnitude > (i.transform.position - transform.position).magnitude))
+                {
+                    active = i;
+                }
+            }
+            return active;
+        }
+    }
 
     public bool OnGround() {return detectGround.OnGround() && (!jumping || _jumpTimer > 0.4f);}
     public bool OnWall() {return detectWall.HitWall();}
@@ -67,6 +82,7 @@ public class Controller : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _startPos = transform.position;
         _animator = GetComponent<Animator>();
+        _interacts = new List<AbstractInteract>();
 
     }
 
@@ -80,16 +96,16 @@ public class Controller : MonoBehaviour
         if (!_stop) HorizontalMovement();
         else _rigidbody.velocity = new Vector2(0.0f, _rigidbody.velocity.y);
 
-        if (_interact != null && _interact.CouldInteract() && !_dead && !_stop && _light.globe.enabled)
+        if (interact != null && interact.CouldInteract(this) && !_dead && !_stop && _light.globe.enabled)
         {
-            interactText.text = _interact.info;
+            interactText.text = interact.info;
             interactText.color = _light.switchLight ? black : white;
         }
         else interactText.text = "";
         _animator.SetFloat("Speed", Math.Abs(_horizontalSpeed));
         _animator.SetBool("Ground", OnGround());
         _animator.SetBool("Jump", jumping);
-        _animator.SetBool("Dead", _dead);
+        _animator.SetBool("Dead", _dead && stop);
     }
 
     
@@ -136,9 +152,9 @@ public class Controller : MonoBehaviour
         yield return new WaitForSeconds(1f);
         _dead = false;
         yield return new WaitForSeconds(2f);
-        foreach (var interact in FindObjectsOfType<AbstractInteract>())
+        foreach (var i in FindObjectsOfType<AbstractInteract>())
         {
-            interact.Reset();
+            i.Reset();
         }
         StartPlayer();
     }
@@ -163,20 +179,18 @@ public class Controller : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        AbstractInteract interact;
-        if (other.TryGetComponent<AbstractInteract>(out interact))
+        AbstractInteract i;
+        if (other.TryGetComponent<AbstractInteract>(out i))
         {
-            if(interact.CouldInteract())
-                _interact = interact;
+            _interacts.Add(i);
         }
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        AbstractInteract interact;
-        if (other.TryGetComponent<AbstractInteract>(out interact))
+        AbstractInteract i;
+        if (other.TryGetComponent<AbstractInteract>(out i))
         {
-            if(interact == _interact)
-                _interact = null;
+            _interacts.Remove(i);
         }
     }
 
@@ -265,7 +279,7 @@ public class Controller : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (jumping || !OnGround() || !context.performed) 
+        if (jumping || !OnGround() || _stop || !context.performed) 
             return;
         
         _jumpTimer = 0.0f;
@@ -282,9 +296,9 @@ public class Controller : MonoBehaviour
 
     public void TryInteract(InputAction.CallbackContext context)
     {
-        if (context.performed && _interact != null && _interact.CouldInteract() && !_dead && !_stop && _light.globe.enabled)
+        if (context.performed && interact != null && interact.CouldInteract(this) && !_dead && !_stop && _light.globe.enabled)
         {
-            _interact.Interact();
+            interact.Interact();
         }
     }
     public void Pause()
