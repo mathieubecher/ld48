@@ -66,6 +66,7 @@
           <e p="Light.cs" t="Include" />
           <e p="LightGestor.cs" t="Include" />
           <e p="LineCable.cs" t="Include" />
+          <e p="PixelPerfectCamera.cs" t="Include" />
           <e p="Row.cs" t="Include" />
           <e p="RowBySpeed.cs" t="Include" />
           <e p="StartTrigger.cs" t="Include" />

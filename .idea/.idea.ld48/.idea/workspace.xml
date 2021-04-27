@@ -24,6 +24,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/Controller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interact/PlatformInteract.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/RowBySpeed.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PixelPerfectCamera.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fps.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interact/Levier.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.pixel-perfect@2.0.4/Runtime/PixelPerfectCamera.cs" root0="SKIP_HIGHLIGHTING" />
@@ -48,7 +49,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Interact/ReloaderInteract.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interact/AbstractInteract.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LightGestor.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Light.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LineCable.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interact/EnergyBarre.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interact/PlatformInteract.cs" />
@@ -58,6 +58,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Interact/StairInteract.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interact/InstantiateLadder.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controller/Controller.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Light.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PixelPerfectCamera.cs" />
       </list>
     </option>
   </component>
@@ -91,6 +93,8 @@
       <option name="presentableId" value="Default" />
       <updated>1619194521342</updated>
       <workItem from="1619194525737" duration="2828000" />
+      <workItem from="1619462458983" duration="323000" />
+      <workItem from="1619520817703" duration="2102000" />
     </task>
     <servers />
   </component>

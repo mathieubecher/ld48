@@ -124,10 +124,11 @@ public class Controller : MonoBehaviour
         yield return new WaitForSeconds(2.1f);
         StopPlayer();
         
-        
-        
-        Instantiate(deadBulb, transform.position, Quaternion.Euler(0,0, UnityEngine.Random.value * 360f));
-        
+        if (_light.globe.enabled)
+        {
+            Instantiate(deadBulb, transform.position, Quaternion.Euler(0, 0, UnityEngine.Random.value * 360f));
+        }
+
         transform.position = _startPos;
         _light.Plug();
         FindObjectOfType<Cog>().energy -= 1.0f;

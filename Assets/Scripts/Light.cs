@@ -11,6 +11,9 @@ public class Light : MonoBehaviour
     [SerializeField] private AnimationCurve turnOff;
     [SerializeField] private AnimationCurve turnOn;
     [SerializeField] private AnimationCurve energy;
+    [SerializeField] private AnimationCurve energyCost;
+    [SerializeField] private AnimationCurve energyCostOff;
+    private float _switchEnergyCostTimer;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] public SpriteRenderer globe;
     
@@ -80,13 +83,21 @@ public class Light : MonoBehaviour
         _lightTimer = (1 - startEnergy) * energy.keys.Last().time;
 
     }
+
+    [SerializeField] private float _debugEnergy = 0.0f;
     // Update is called once per frame
     void Update()
     {
         float energyCoeff = 1.0f;
         if (_launch)
         {
-            _lightTimer += Time.deltaTime * (switchLight?1.0f:0.1f); 
+            if (switchLight && _switchEnergyCostTimer < energyCost.keys.Last().time)
+                _switchEnergyCostTimer += Time.deltaTime;
+            else if (!switchLight && _switchEnergyCostTimer > 0)
+                _switchEnergyCostTimer -= Time.deltaTime;
+            AnimationCurve cost = (switchLight) ? energyCost : energyCostOff;
+            _debugEnergy = cost.Evaluate(_switchEnergyCostTimer);
+            _lightTimer += Time.deltaTime * cost.Evaluate(_switchEnergyCostTimer);//(switchLight?1.0f:0.1f); 
             energyCoeff = energy.Evaluate(_lightTimer);
         }
         
@@ -116,7 +127,9 @@ public class Light : MonoBehaviour
     public void Switch()
     {
         switchLight = !switchLight;
-        
+        if (switchLight)
+            _switchEnergyCostTimer = 0;
+
     }
 
     public void UnPlug()
