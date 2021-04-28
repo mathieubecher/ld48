@@ -1076,6 +1076,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   set: 1
   info: '[Recharge platform]'
+  marker: {fileID: 0}
+  infoCancel: 
   counter: {fileID: 8908505372528831115}
   cost: 0.1
 --- !u!61 &8908505372597019482
@@ -1165,11 +1167,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   set: 0
   info: '[Activate]'
+  marker: {fileID: 0}
+  infoCancel: '[No power]'
   start: {fileID: 8220013978199883035}
   end: {fileID: 7743986878947943956}
   speed: 10
-  kynematic: 0
-  elevator: 0
   _platform: {fileID: 0}
   counter: {fileID: 8908505372528831115}
 --- !u!212 &8908505372961950583
@@ -1350,6 +1352,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   set: 0
   info: '[Recharge]'
+  marker: {fileID: 0}
+  infoCancel: 
   counter: {fileID: 8908505372528831115}
   cost: 0.1
 --- !u!61 &6960844940036866812

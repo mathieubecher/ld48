@@ -14,6 +14,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Light.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interact/EnergyBarre.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ElevatorRowBySpeed.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interact/ElevatorInteract.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/DetectGround.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interact/ReloaderInteract.cs" root0="FORCE_HIGHLIGHTING" />
@@ -31,6 +32,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Cog.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interact/InteractLight.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LineCable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameOver.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.pixel-perfect@2.0.4/Runtime/PixelPerfectCamera.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interact/InstantiateLadder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interact/CounterInteract.cs" root0="FORCE_HIGHLIGHTING" />
@@ -43,7 +45,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Controller/DetectWall.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controller/DetectGround.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/StartTrigger.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Cog.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Row.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentLight.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interact/CounterInteract.cs" />
@@ -55,16 +56,18 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Interact/Platform.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interact/InstantiateLadder.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PixelPerfectCamera.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Interact/AbstractInteract.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interact/StairInteract.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interact/InteractLight.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interact/ReloaderInteract.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Light.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interact/InteractElevator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Interact/ElevatorInteract.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interact/PlatformInteract.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/Controller.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interact/ElevatorInteract.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ElevatorRowBySpeed.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interact/ElevatorSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Light.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Cog.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/Controller.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interact/AbstractInteract.cs" />
       </list>
     </option>
   </component>
@@ -100,7 +103,10 @@
       <workItem from="1619194525737" duration="2828000" />
       <workItem from="1619462458983" duration="323000" />
       <workItem from="1619520817703" duration="2102000" />
-      <workItem from="1619547057998" duration="8200000" />
+      <workItem from="1619547057998" duration="8915000" />
+      <workItem from="1619608453585" duration="1315000" />
+      <workItem from="1619634642790" duration="2576000" />
+      <workItem from="1619643338185" duration="2299000" />
     </task>
     <servers />
   </component>

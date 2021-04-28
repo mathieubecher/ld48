@@ -104,6 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   set: 0
   info: '[Go down]'
+  infoCancel: '[Broken]'
   start: {fileID: 5362014176811659945}
   end: {fileID: 5362014177334182455}
   controller: {fileID: 0}
@@ -242,6 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   set: 0
   info: '[Climb]'
+  infoCancel: '[Broken]'
   start: {fileID: 5362014177334182455}
   end: {fileID: 5362014176811659945}
   controller: {fileID: 0}

@@ -76,9 +76,9 @@ public class Light : MonoBehaviour
         _launch = true;
 
     }
-    public void Stop()
+    public void Stop(float energyStart)
     {
-        startEnergy = 1.0f;
+        startEnergy = energyStart;
         _launch = false;
         _lightTimer = (1 - startEnergy) * energy.keys.Last().time;
 

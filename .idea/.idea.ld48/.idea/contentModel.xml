@@ -49,8 +49,10 @@
               <e p="MyInputActions.cs" t="Include" />
             </e>
           </e>
+          <e p="ElevatorRowBySpeed.cs" t="Include" />
           <e p="EnvironmentLight.cs" t="Include" />
           <e p="Fps.cs" t="Include" />
+          <e p="GameOver.cs" t="Include" />
           <e p="Interact" t="Include">
             <e p="AbstractInteract.cs" t="Include" />
             <e p="CounterInteract.cs" t="Include" />

@@ -5,6 +5,7 @@ using System.Timers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 public class Controller : MonoBehaviour
@@ -35,7 +36,8 @@ public class Controller : MonoBehaviour
     [SerializeField] private DetectGround detectGround;
     [SerializeField] private TextMeshProUGUI verticalSpeedText;
     [SerializeField] private TextMeshPro interactText;
-    [SerializeField] private Color black;
+    [SerializeField] private Transform interactBg;
+    private float _interactRelativeY;
     [SerializeField] private Color white;
     private bool _jumping;
     public bool jumping{
@@ -51,12 +53,15 @@ public class Controller : MonoBehaviour
 
     [Header("Dead")] 
     [SerializeField] private Animator respawnUI;
+    private bool _isGameOver;
+    [SerializeField] private Animator gameOver;
     [SerializeField] private GameObject deadBulb;
     private bool _dead = false;
     public bool IsAlive(){return !_dead;}
     private bool _stop = false;
     public bool stop { get => _stop; }
     private List<AbstractInteract> _interacts;
+    public LineRenderer interactLine;
     private AbstractInteract interact
     {
         get
@@ -72,6 +77,23 @@ public class Controller : MonoBehaviour
             return active;
         }
     }
+    private AbstractInteract notInteract
+    {
+        get
+        {
+            AbstractInteract active = null;
+            foreach (AbstractInteract i in _interacts)
+            {
+                if (!i.CouldInteract(this) && (active == null || (active.transform.position - transform.position).magnitude > (i.transform.position - transform.position).magnitude))
+                {
+                    active = i;
+                }
+            }
+            return active;
+        }
+    }
+
+    
 
     public bool OnGround() {return detectGround.OnGround() && (!jumping || _jumpTimer > 0.4f);}
     public bool OnWall() {return detectWall.HitWall();}
@@ -79,6 +101,7 @@ public class Controller : MonoBehaviour
     
     void Start()
     {
+        _interactRelativeY = interactText.transform.localPosition.y;
         _rigidbody = GetComponent<Rigidbody2D>();
         _startPos = transform.position;
         _animator = GetComponent<Animator>();
@@ -98,10 +121,31 @@ public class Controller : MonoBehaviour
 
         if (interact != null && interact.CouldInteract(this) && !_dead && !_stop && _light.globe.enabled)
         {
+            
+            interactLine.enabled = true;
+            interactLine.SetPosition(0, _light.transform.position);
+            interactLine.SetPosition(1, interact.transform.position);
             interactText.text = interact.info;
-            interactText.color = _light.switchLight ? black : white;
+            interactBg.gameObject.SetActive(true);
+            interactBg.localScale = interactText.GetRenderedValues(true);
+            interactText.color = white;
         }
-        else interactText.text = "";
+        else if (notInteract != null && notInteract.infoCancel != "")
+            {
+                interactBg.gameObject.SetActive(true);
+                interactLine.enabled = false;
+                interactText.text = notInteract.infoCancel;
+                interactBg.gameObject.SetActive(true);
+                interactBg.localScale = interactText.GetRenderedValues(true);
+                interactText.color = white;
+            }
+        else
+        {
+            interactBg.gameObject.SetActive(false);
+            interactLine.enabled = false;
+            interactText.text = "";
+        }
+        
         _animator.SetFloat("Speed", Math.Abs(_horizontalSpeed));
         _animator.SetBool("Ground", OnGround());
         _animator.SetBool("Jump", jumping);
@@ -128,6 +172,8 @@ public class Controller : MonoBehaviour
     public void Respawn(bool stop = true)
     {
         if (_dead) return;
+        
+        
         _rigidbody.velocity = new Vector2(0 ,_rigidbody.velocity.y);
         _dead = true;
         if (stop) StopPlayer();
@@ -146,17 +192,33 @@ public class Controller : MonoBehaviour
         }
 
         transform.position = _startPos;
-        _light.Plug();
-        FindObjectOfType<Cog>().energy -= 1.0f;
-        _light.Stop();
-        yield return new WaitForSeconds(1f);
-        _dead = false;
-        yield return new WaitForSeconds(2f);
-        foreach (var i in FindObjectsOfType<AbstractInteract>())
+        
+        Cog cog = FindObjectOfType<Cog>();
+        if (cog.endEnergy)
         {
-            i.Reset();
+            gameOver.SetBool("GameOver", true);
+            _isGameOver = true;
         }
-        StartPlayer();
+        else
+        {
+            _light.Plug();
+            float energy = 1.0f;
+        
+            if (energy > cog.energy) energy = cog.energy;
+            cog.energy = cog.energy - energy;
+        
+            _light.Stop(energy);
+            yield return new WaitForSeconds(1f);
+            _dead = false;
+            yield return new WaitForSeconds(2f);
+            foreach (var i in FindObjectsOfType<AbstractInteract>())
+            {
+                i.Reset();
+            }
+            StartPlayer();
+        }
+        
+        
     }
     IEnumerator UnPlugLight() 
     {
@@ -279,6 +341,9 @@ public class Controller : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        if (_isGameOver)
+            SceneManager.LoadScene(0);
+        
         if (jumping || !OnGround() || _stop || !context.performed) 
             return;
         
@@ -300,15 +365,6 @@ public class Controller : MonoBehaviour
         {
             interact.Interact();
         }
-    }
-    public void Pause()
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        transform.position = _startPos;
-        _rigidbody.velocity = Vector2.zero;
-#endif
     }
 #endregion
 

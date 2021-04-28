@@ -6,8 +6,11 @@ public abstract class AbstractInteract : MonoBehaviour
 {
     public bool set;
     public string info = "[Activate]";
+    public string infoCancel;
+
     public virtual bool CouldInteract(Controller controller){return !set;}
     public virtual void Interact(){set = true;}
+    
 
     public virtual void Reset()
     {

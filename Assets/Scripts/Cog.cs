@@ -13,10 +13,18 @@ public class Cog : MonoBehaviour
     [SerializeField] private TextMeshPro infosText;
     [SerializeField] private TextMeshPro energyText;
     [SerializeField] private TextMeshPro runEnergyText;
-    
+
+    public EnvironmentLight light;
+    public bool endEnergy = false;
+
+    private float maxEnergy;
+    private float maxLight;
     // Start is called before the first frame update
     void Start()
     {
+        maxEnergy = energy;
+        maxLight = light.intensity;
+        
         _controller = FindObjectOfType<Controller>();
         energy -= 1.0f;
     }
@@ -30,6 +38,9 @@ public class Cog : MonoBehaviour
         energyText.text = "Energy of Cog : " + ((int) Math.Floor(energy * 10.0f));
         
         runEnergyText.text = "Actual : " + (int)Math.Ceiling(_controller.getLight.startEnergy * 10.0f);
+
+        light.intensity = 1.0f + (maxLight - 1.0f ) * (energy / maxEnergy); 
+        endEnergy = (energy <= 0.0f);
     }
 
     public void AddTime(InputAction.CallbackContext context)

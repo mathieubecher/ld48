@@ -14,6 +14,10 @@ public class ElevatorSystem : MonoBehaviour
 
     [HideInInspector] public bool set;
     public int used;
+    public bool dir
+    {
+        get => used % 2 == 0;
+    }
 
     private ElevatorInteract active;
     private bool _reset;
@@ -77,12 +81,18 @@ public class ElevatorSystem : MonoBehaviour
     IEnumerator InteractEnd()
     {
         _reset = true;
+        float realSpeed = speed;
+        speed = 0;
         yield return new WaitForSeconds(0.7f);
         counter.set = false;
         set = false;
-                
-        active.controller.isKinematic = false;
-        active.controller.velocity = Vector2.zero;
-        active.controller.GetComponent<Controller>().StartPlayer();
+        if (active.controller != null)
+        {
+            active.controller.isKinematic = false;
+            active.controller.velocity = Vector2.zero;
+            active.controller.GetComponent<Controller>().StartPlayer();
+        }
+
+        speed = realSpeed;
     }
 }
